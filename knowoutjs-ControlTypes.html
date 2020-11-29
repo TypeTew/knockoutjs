@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="maintable">
+        <tr>
+            <td>
+                <h3>HTML controls</h3>
+                <table>
+                    <tr>
+                        <td>Text value (updates on change):</td>
+                        <td><input data-bind="value : StringValue" name="StringValue" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Text value (updates on keystroke):</td>
+                        <td><input data-bind="value : StringValue,valueUpdate : &#39;afterkeydown&#39;"
+                                name="StringValue" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Text value (multi-line):</td>
+                        <td><textarea data-bind="value : StringValue"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input data-bind="value : PasswordValue" name="PasswordValue" type="password" /></td>
+                    </tr>
+                    <tr>
+                        <td>Checkbox:</td>
+                        <td><input data-bind="checked : BooleanValue" type="checkbox" /></td>
+                    </tr>
+                    <tr>
+                        <td>Drop-down list:</td>
+                        <td>
+                            <select data-bind="options : OptionValue,value : SelectedOptionValue"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Multi-select drop-down list:</td>
+                        <td><select data-bind="options : OptionValue,selectedOptions : MultipleSelectedOptionValues"
+                                multiple="multiple"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Radio buttons:</td>
+                        <td>
+                            <input data-bind="checked : RadioSelectedOptionValue" type="radio" value="Alpha" /> Alpha
+                            <input data-bind="checked : RadioSelectedOptionValue" type="radio" value="Beta" /> Beta
+                            <input data-bind="checked : RadioSelectedOptionValue" type="radio" value="Gamma" /> Gamma
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <!-- คลิกแล้วมาแสดงนะครับ -->
+            <td>
+                <h3>What's in the model?</h3>
+                <table>
+                    <tr>
+                        <td>Text value:</td>
+                        <td data-bind="text : StringValue"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td data-bind="text : PasswordValue"></td>
+                    </tr>
+                    <tr>
+                        <td>Bool value:</td>
+                        <td data-bind="text : BooleanValue() ? 'True' : 'False'"></td>
+                    </tr>
+                    <tr>
+                        <td>Selected option:</td>
+                        <td data-bind="text : SelectedOptionValue"></td>
+                    </tr>
+                    <tr>
+                        <td>Multi-selected options:</td>
+                        <td data-bind="text : MultipleSelectedOptionValues"></td>
+                    </tr>
+                    <tr>
+                        <td>Radio button selection:</td>
+                        <td data-bind="text : RadioSelectedOptionValue"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="/script/jquery-3.4.1.min.js"></script>
+    <script src="/script/knockout-3.4.2.js"></script>
+    <script src="/script/knockout.mapping-latest.js"></script>
+
+    <script type="text/javascript">
+        var viewModelJs = {
+            "StringValue": "Hello",
+            "PasswordValue": "mypass",
+            "BooleanValue": true,
+            "OptionValue": ["Alpha", "Beta", "Gamma"],
+            "SelectedOptionValue": "Gamma",
+            "MultipleSelectedOptionValues": ["Alpha"],
+            "RadioSelectedOptionValue": "Beta"
+        };
+        var viewModel = ko.mapping.fromJS(viewModelJs);
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+
+</html>
