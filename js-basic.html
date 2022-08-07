@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Basic</title>
+</head>
+<body>
+
+<script src="script/js-if.js"></script>
+<script type="text/javascript">
+function Multi_Value() { // ...language สามารถรับค่าได้แบบหลายค่า แต่ค่าที่ได้จะเป็น Array
+    const data = (fullname, ...language) => {
+        // var test  = language
+        return fullname + " " + language
+    }
+    console.log("แสดงค่ารับตัวแปรแบบหลายตัว ข้อมูลลูกค้า : " + data("TypeTew", "VB", "C++", "C#"))
+}
+
+function loopmap() { //loop map
+    const data1 = (fullname, ...language) => {
+        return language.map(l => fullname + "ชอบภาษา : " + language);
+    }
+    console.log(data1("loopmap TypeTew", "VB", "C++", "C#"));
+    // ============
+    const data2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const result = data2.map(function(value) {
+        return value * 2
+    })
+    console.log(result)
+}
+
+Multi_Value();
+loopmap();
+
+</script>
+
+    
+</body>
+</html>
